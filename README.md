@@ -1,6 +1,6 @@
 [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 [![Travis Build Status](https://travis-ci.org/mavogel/ilias-client-lib.svg?branch=master)](https://travis-ci.org/mavogel/ilias-client-lib)
-[![Code Coverage](https://img.shields.io/codecov/c/github/mavogel/ilias-client/master.svg)](https://codecov.io/github/mavogel/ilias-client-lib?branch=master)
+[![Code Coverage](https://img.shields.io/codecov/c/github/mavogel/ilias-client-lib/master.svg)](https://codecov.io/github/mavogel/ilias-client-lib?branch=master)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.mavogel/ilias-client-lib/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.mavogel/ilias-client-lib)
 
 # Ilias-client-lib: A library for accessing the [ilias](http://ilias.de/) e-Learning platform
