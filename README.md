@@ -23,9 +23,7 @@ Currently a small part of the [SOAP](https://en.wikipedia.org/wiki/SOAP) interfa
 5. **Groups with its members** can be retrieved. 
 
 ## <a name="usage"></a>Usage
-You can download the built artifact from Sonatype which is preferred or built it on your own. 
-
-A [jdk8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) is required in both cases.
+You can add the dependency or built it on your own. 
 
 ### <a name="maven-dependency"></a>Maven dependency 
 
@@ -38,7 +36,8 @@ A [jdk8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-
 ```
 
 ### <a name="built-it-on-your-own"></a>Built it on your own
-This additionally requires [maven](https://maven.apache.org/).
+A [jdk8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) 
+and [maven](https://maven.apache.org/) are required.
 
 ```bash
 $ git clone https://github.com/mavogel/ilias-client-lib.git && cd ilias-client-lib 
