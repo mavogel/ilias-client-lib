@@ -20,7 +20,7 @@ Currently a small part of the [SOAP](https://en.wikipedia.org/wiki/SOAP) interfa
 3. **Set or update a registration period** in all or only some groups in one course.
 3. **Set or update a maximum amount of members** in all or only some groups in one course.
 4. **File upload permission** can be set for the group members role.
-5. **Groups with its members can be** passed to Velocity template and **printed**. Two example templates are provided in `src/main/resources/templates`. 
+5. **Groups with its members** can be retrieved. 
 
 ## <a name="usage"></a>Usage
 You can download the built artifact from Sonatype which is preferred or built it on your own. 
