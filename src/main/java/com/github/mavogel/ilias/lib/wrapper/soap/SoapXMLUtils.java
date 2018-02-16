@@ -329,4 +329,18 @@ public class SoapXMLUtils {
                 u.getChild("Lastname").getText().trim(),
                 u.getChild("Email").getText().trim())).collect(Collectors.toList());
     }
+
+    /**
+     * Generates an XML string needed to create a new group via  the SOAP interface.
+     * @param groupName The name of the group
+     * @return The XML string
+     */
+    public static String generateAddGroupXMLFromName(String groupName) {
+        return "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
+                "<group xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" type=\"open\">" +
+                "<title>" + groupName + "</title>" +
+                "<registration type=\"direct\" waitingList=\"No\">" +
+                "</registration>" +
+                "</group>";
+    }
 }
