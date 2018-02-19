@@ -21,6 +21,7 @@ Currently a small part of the [SOAP](https://en.wikipedia.org/wiki/SOAP) interfa
 3. **Set or update a maximum amount of members** in all or only some groups in one course.
 4. **File upload permission** can be set for the group members role.
 5. **Groups with its members** can be retrieved. 
+6. **Add a group to a course**
 
 ## <a name="usage"></a>Usage
 You can add the dependency or built it on your own. 
@@ -31,7 +32,7 @@ You can add the dependency or built it on your own.
 <dependency>
     <groupId>com.github.mavogel</groupId>
     <artifactId>ilias-client-lib</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
 </dependency>
 ```
 
@@ -51,5 +52,5 @@ $ mvn clean install
 - It is assumed that `groups` are always in `folder` nodes.
 
 ## <a name="license"></a>License
-    Copyright (c) 2017 Manuel Vogel
+    Copyright (c) 2017-2018 Manuel Vogel
     Source code is open source and released under the MIT license.
