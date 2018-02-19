@@ -1,7 +1,10 @@
-Release Notes
-=============
+# Release Notes
+## Version 1.0.0 (19-Feb-2018)
 
-**Version 1.0.0 (06-Nov-2017)**
+Features:
+* Add a group to a course
+
+## Version 1.0.0 (06-Nov-2017)
 
 **NOTE:** this lib was previously part of the [ilias-client](https://github.com/mavogel/ilias-client/) and is now
 a separate jar.
