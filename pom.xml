@@ -5,7 +5,7 @@
 
     <groupId>com.github.mavogel</groupId>
     <artifactId>ilias-client-lib</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.0.2-SNAPSHOT</version>
     <name>The Ilias Client Library</name>
     <url>https://github.com/mavogel/ilias-client-lib</url>
     <description>A library for accessing the API of the
