@@ -27,6 +27,7 @@ package com.github.mavogel.ilias.lib.wrapper;/*
 import com.github.mavogel.ilias.lib.model.GroupUserModelFull;
 import com.github.mavogel.ilias.lib.model.IliasNode;
 
+import java.rmi.RemoteException;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -132,7 +133,17 @@ public interface IliasEndpoint {
      * @param course    The course the group shall be created in
      * @param groupName The name of the group
      * @return True iff the group has been created successfully
-     * @throws Exception in case of a failure. Detailed logs are written.
      */
-    boolean addGroup(IliasNode course, String groupName) throws Exception;
+    boolean addGroup(IliasNode course, String groupName);
+
+    /**
+     * Checks, if a group with the given name already exists.
+     * Unfortunately the exist mechanism of the WSDL searches in all
+     * courses of the user and not just in the given one. Right now this cannot be restricted.
+     *
+     * @param groupName The name to check
+     * @return True, if the group with the given name already exists in a course of the user
+     * @throws Exception in case of a failure.
+     */
+    boolean groupExists(String groupName) throws Exception;
 }

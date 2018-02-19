@@ -30,7 +30,6 @@ import com.github.mavogel.ilias.lib.model.*;
 import com.github.mavogel.ilias.lib.wrapper.AbstractIliasEndpoint;
 import com.github.mavogel.ilias.lib.wrapper.DisplayStatus;
 import com.github.mavogel.ilias.lib.wrapper.PermissionOperation;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 
 import javax.xml.rpc.ServiceException;
@@ -39,7 +38,6 @@ import java.rmi.RemoteException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 /**
  * Created by mavogel on 6/25/17.
@@ -369,57 +367,26 @@ public class SoapEndpoint extends AbstractIliasEndpoint {
     }
 
     /**
-     * Adds a new group to a given course.
-     * If the group already exists, the user will be asked, if he
-     * still wants to create it. Unfortunately the exist mechanism searches in all
-     * courses of the user and not just in the given one. We cannot restrict this search, thus
-     * the user has to decide. (@see {@link com.github.mavogel.ilias.lib.wrapper.IliasEndpoint})
-     *
-     * @param course    The course the group shall be created in
-     * @param groupName The name of the group
-     * @return True iff the group has been successfully been created
-     * @throws Exception in case of a failure. Detailed logs are written.
+     * (@see {@link com.github.mavogel.ilias.lib.wrapper.IliasEndpoint#addGroup(IliasNode, String)})
      */
     @Override
-    public boolean addGroup(IliasNode course, String groupName) throws Exception {
-        if (endpoint.groupExists(userDataIds.getSid(), groupName)) {
-            LOG.info("Group \"" + groupName + "\" already exists, but unfortunately we cannot check in which course. Please check it yourself. Do you still want to create this group?");
-            if (!(readAndParseUserConfirmation())) {
-                return false;
-            }
-        }
+    public boolean addGroup(IliasNode course, String groupName) {
         try {
             int result = endpoint.addGroup(userDataIds.getSid(), course.getRefId(), SoapXMLUtils.generateAddGroupXMLFromName(groupName));
             LOG.info("Created group \"" + groupName + "\"");
             LOG.debug("With ref_id: " + result);
             return true;
         } catch (RemoteException e) {
-            LOG.error("Could not add group " + groupName);
+            LOG.error("Could not create group " + groupName);
             return false;
         }
     }
 
-    //TODO: Taken from IOUtils from the ilias-client. Maybe move the class to this lib and put this method there?
-    private static boolean readAndParseUserConfirmation() {
-        LOG.info("Confirm please: [Y] or [N]");
-        boolean validChoice = false;
-        boolean choice = false;
-        Scanner scanner = new Scanner(System.in);
-
-        while (!validChoice) {
-            String line = scanner.nextLine();
-            if (StringUtils.deleteWhitespace(line).equalsIgnoreCase("Y")) {
-                choice = true;
-                validChoice = true;
-            } else if (StringUtils.deleteWhitespace(line).equalsIgnoreCase("N")) {
-                choice = false;
-                validChoice = true;
-            } else {
-                LOG.error("Invalid choice. Try again!");
-            }
-        }
-
-        return choice;
+    /**
+     * (@see {@link com.github.mavogel.ilias.lib.wrapper.IliasEndpoint#groupExists(String)})
+     */
+    @Override
+    public boolean groupExists(String groupName) throws Exception {
+        return endpoint.groupExists(userDataIds.getSid(), groupName);
     }
-
 }
