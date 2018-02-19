@@ -75,6 +75,23 @@ public class SoapXMLUtilsTest {
     }
 
     @Test
+    public void shouldHandleOneAddGroupXML() {
+        // == prepare
+        String expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
+                "<group xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" type=\"open\">" +
+                "<title>" + "TheGroupName" + "</title>" +
+                "<registration type=\"direct\" waitingList=\"No\">" +
+                "</registration>" +
+                "</group>";
+
+        // == go
+        String addGroupXML = SoapXMLUtils.generateAddGroupXMLFromName("TheGroupName");
+
+        // == verify
+        assertEquals(expected, addGroupXML);
+    }
+
+    @Test
     public void shouldHandleMoreDisplayStati() {
         // == prepare
         String expected = new StringBuilder()

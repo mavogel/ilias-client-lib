@@ -27,9 +27,9 @@ package com.github.mavogel.ilias.lib.wrapper.soap;/*
 import com.github.mavogel.client.ILIASSoapWebserviceLocator;
 import com.github.mavogel.client.ILIASSoapWebservicePortType;
 import com.github.mavogel.ilias.lib.model.*;
+import com.github.mavogel.ilias.lib.wrapper.AbstractIliasEndpoint;
 import com.github.mavogel.ilias.lib.wrapper.DisplayStatus;
 import com.github.mavogel.ilias.lib.wrapper.PermissionOperation;
-import com.github.mavogel.ilias.lib.wrapper.AbstractIliasEndpoint;
 import org.apache.log4j.Logger;
 
 import javax.xml.rpc.ServiceException;
@@ -364,5 +364,29 @@ public class SoapEndpoint extends AbstractIliasEndpoint {
                 LOG.error("Failed to set registration date on group '" + group.getRefId() + " - " + group.getTitle() + "'");
             }
         }
+    }
+
+    /**
+     * (@see {@link com.github.mavogel.ilias.lib.wrapper.IliasEndpoint#addGroup(IliasNode, String)})
+     */
+    @Override
+    public boolean addGroup(IliasNode course, String groupName) {
+        try {
+            int result = endpoint.addGroup(userDataIds.getSid(), course.getRefId(), SoapXMLUtils.generateAddGroupXMLFromName(groupName));
+            LOG.info("Created group \"" + groupName + "\"");
+            LOG.debug("With ref_id: " + result);
+            return true;
+        } catch (RemoteException e) {
+            LOG.error("Could not create group " + groupName);
+            return false;
+        }
+    }
+
+    /**
+     * (@see {@link com.github.mavogel.ilias.lib.wrapper.IliasEndpoint#groupExists(String)})
+     */
+    @Override
+    public boolean groupExists(String groupName) throws Exception {
+        return endpoint.groupExists(userDataIds.getSid(), groupName);
     }
 }
